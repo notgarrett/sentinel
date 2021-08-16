@@ -21,7 +21,7 @@ export const updateNickname = async (member, check) => {
   const profile = await identifyDiscordProfile(discordId);
 
   if (!profile) {
-    if (check) member.setNickname(`X | ${member.user.username}`);
+    if (check === true) member.setNickname(`X | ${member.user.username}`);
     return;
   }
 

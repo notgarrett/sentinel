@@ -82,6 +82,8 @@ bot.on("ready", () => {
 bot.on("guildMemberAdd", (member) => {});
 
 bot.on("guildMemberUpdate", (oldMember, newMember) => {
+  if (newMember.guild.id === "826628317830316083") return;
+
   console.log("test");
   //return;
   // If the role(s) are present on the old member object but no longer on the new one (i.e role(s) were removed)

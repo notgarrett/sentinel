@@ -1,5 +1,3 @@
-import mongoose from "mongoose";
-import { ProfileSchema } from "../models/ProfileModel";
 import { getGroupRank, getSecondaryGroupRank } from "./getGroupRank";
 import {
   identifyDiscordProfile,
@@ -8,9 +6,10 @@ import {
 import { getRobloxName } from "./getRobloxName";
 import { academiatable, aetable } from "../ranks.json";
 import { addUsername } from "./addUsername";
-const User = mongoose.model("Users", ProfileSchema);
 
-export const updateNickname = async (member) => {
+export const updateNickname = async (member, check) => {
+  check = check || false;
+
   if (!member) return;
 
   console.log("Member exists");
@@ -24,7 +23,7 @@ export const updateNickname = async (member) => {
   const profile = await identifyDiscordProfile(discordId);
 
   if (!profile) {
-    member.setNickname(`X | ${member.user.username}`);
+    if (check) member.setNickname(`X | ${member.user.username}`);
     return;
   }
 

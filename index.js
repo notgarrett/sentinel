@@ -82,8 +82,9 @@ bot.on("ready", () => {
 bot.on("guildMemberAdd", (member) => {});
 
 bot.on("guildMemberUpdate", (oldMember, newMember) => {
-  if (newMember.guild.id === "826628317830316083") return;
-
+  if (newMember.guild.id === "826628317830316083") {
+    updateNickname(newMember);
+  }
   console.log("test");
   //return;
   // If the role(s) are present on the old member object but no longer on the new one (i.e role(s) were removed)
@@ -101,7 +102,7 @@ bot.on("guildMemberUpdate", (oldMember, newMember) => {
   if (removedRoles.size > 0) {
     removedRoles = removedRoles.map((r) => r.id);
     removeRoles(removedRoles, newMember);
-    updateNickname(newMember);
+    updateNickname(newMember, true);
     return;
   }
   // If the role(s) are present on the new member object but are not on the old one (i.e role(s) were added)
@@ -111,7 +112,7 @@ bot.on("guildMemberUpdate", (oldMember, newMember) => {
   if (addedRoles.size > 0) {
     addedRoles = addedRoles.map((r) => r.id);
     addRoles(addedRoles, newMember);
-    updateNickname(newMember);
+    updateNickname(newMember, true);
     return;
   }
 });

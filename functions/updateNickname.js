@@ -8,8 +8,6 @@ import { academiatable, aetable } from "../ranks.json";
 import { addUsername } from "./addUsername";
 
 export const updateNickname = async (member, check) => {
-  check = check || false;
-
   if (!member) return;
 
   console.log("Member exists");

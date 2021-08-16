@@ -83,7 +83,7 @@ bot.on("guildMemberAdd", (member) => {});
 
 bot.on("guildMemberUpdate", (oldMember, newMember) => {
   if (newMember.guild.id === "826628317830316083") {
-    updateNickname(newMember);
+    updateNickname(newMember, false);
   }
   console.log("test");
   //return;

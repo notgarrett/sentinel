@@ -21,8 +21,10 @@ export const updateNickname = async (member, check) => {
   const profile = await identifyDiscordProfile(discordId);
 
   if (!profile) {
-    if (check === true) member.setNickname(`X | ${member.user.username}`);
-    return;
+    if (check === true) {
+      member.setNickname(`X | ${member.user.username}`);
+      return;
+    } else return;
   }
 
   const academiaRank = await getGroupRank(profile.RobloxId); //Academia
